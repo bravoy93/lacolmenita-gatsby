@@ -1,0 +1,144 @@
+.nav_wrapper {
+  background-color: #ffffff;
+  width: 100vw;
+  height: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  transition-duration: 200ms;
+  transition-property: background-color;
+  box-shadow: 0 0 8px 0 rgba(37, 37, 37, 0.589);
+  z-index: 100;
+}
+
+.hamburger {
+  margin-right: 1rem;
+}
+
+.cfd_logo {
+  height: 40px;
+  padding-left: 24px;
+}
+
+.cfd_icon_mobile {
+  height: 40px;
+  margin-left: 1rem;
+}
+
+.items_nav {
+  font-size: 12px;
+  font-weight: 400;
+  padding-right: 24px;
+}
+
+.items_nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  position: relative;
+}
+
+.items_nav li a{
+  padding: 0 1rem;
+  color: #1f497d;
+  position: relative;
+}
+
+.nav_text_scrolled li a{
+  color: #ffffff;
+}
+
+.items_nav li a:hover {
+  color: #28aee4;
+  cursor: pointer;
+}
+.items_nav li a:active {
+  color: #df3063;
+  /* font-weight: bold; */
+}
+
+.navNumber {
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.scrolled {
+  /* background-color: #00486b; */
+  background-image: linear-gradient(to bottom right, #1f497d, #1870b9);
+}
+
+@media (min-width: 670px) and (max-width: 768px) {
+  .nav_wrapper {
+    height: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav_wrapper {
+    background-image: linear-gradient(to bottom right, #1f497d, #1870b9);
+  }
+  .items_nav {
+    display: none;
+  }
+  .cfd_logo {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .nav_wrapper {
+    height: 80px;
+  }
+  .cfd_icon_mobile {
+    display: none;
+  }
+  .items_nav {
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .nav_number {
+    text-decoration: none;
+    color: #1f497d;
+  }
+  .navNumber span {
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: -1px;
+  }
+
+  .nav_number_scrolled {
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+  .nav_number:hover {
+    color: #df3063;
+    font-weight: bold;
+  }
+  .items_nav ul li ul {
+    position: absolute;
+    display: block;
+    background-color: #df3063;
+    width: 55vw;
+    /* right: -2000px; */
+    right: -24px;
+    opacity: 0;
+    top: 50px;
+    border-radius: 0px 0px 0px 100px;
+    z-index: -100;
+    transition: 0.4s ease-in;
+  }
+  .navNumber:hover ul {
+    /* display: block; */
+    opacity: 1;
+    transition: 0.3s ease-in;
+  }
+  .items_nav ul li ul li {
+    padding: 18px 0px;
+    text-align: center;
+    color: #ffffff;
+  }
+}
