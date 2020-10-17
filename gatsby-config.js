@@ -11,7 +11,12 @@ module.exports = {
     description: `La Colmenita es una compañía de Teatro Infantil de Cuba la cual juega a hacer teatro con niños y adolescentes.`,
     author: `La Colmenita de Cuba`,
     keywords: [`La Colmenita`, `Cuba`, `infantil`, `teatro`, `teatro infantil`, `compañía de teatro`],
-    siteUrl: `https://lacolmenita.netlify.app`
+    siteUrl: `https://lacolmenita.netlify.app`,
+    siteImage: {
+      src: "https://lacolmenita.imgix.net/hLzTJQz.png",
+      width: '512px',
+      height: '512px'
+    }
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

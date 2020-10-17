@@ -1,20 +1,26 @@
 import React from "react"
 import Layout from "../Components/Layout/Layout"
 import SEO from "../Components/seo"
-
-const homeImage = {
-  src: "https://lacolmenita.imgix.net/hLzTJQz.png",
-  width: '512px',
-  height: '512px'
-}
+import { useStaticQuery, graphql } from "gatsby"
 
 export default function Home({location}) {
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            siteImage
+          }
+        }
+      }
+    `
+  )
+
   return (
     <Layout>
       <SEO title="Home"
       pathname="/"
-      image={homeImage}/>
-      
+      image={site.siteImage}/>      
     </Layout>
   )
 }
