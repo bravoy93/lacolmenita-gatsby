@@ -1,8 +1,8 @@
 import React, {useState} from "react"
-import Nav from "../Nav/Nav"
-import Backdrop from "../Backdrop/Backdrop"
+// import Nav from "../Nav/Nav"
+// import Backdrop from "../Backdrop/Backdrop"
 // import Toolbar from "../Toolbar/Toolbar"
-import Footer from "../Footer/Footer"
+// import Footer from "../Footer/Footer"
 import "typeface-roboto"
 
 export default function Layout({children}) {

@@ -1,21 +1,20 @@
 import React from "react"
 import Layout from "../Components/Layout/Layout"
 import SEO from "../Components/seo"
-import Medicare from "../Components/Medicare/medicare"
 
 const homeImage = {
-  src: "https://cfd-web.s3.us-east-2.amazonaws.com/images/blue%2Bbox%2Bfull.svg",
-  width: '500px',
-  height: '500px'
+  src: "https://lacolmenita.imgix.net/hLzTJQz.png",
+  width: '512px',
+  height: '512px'
 }
 
 export default function Home({location}) {
   return (
     <Layout>
-      <SEO title="Medicare Coverage Plans"
+      <SEO title="Home"
       pathname="/"
-      image={homeImage} />
-      <Medicare />
+      image={homeImage}/>
+      
     </Layout>
   )
 }

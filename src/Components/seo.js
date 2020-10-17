@@ -22,10 +22,10 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname, keywo
 
   const metaDescription = description || site.siteMetadata.description
   const metaKeywords = keywords || site.siteMetadata.keywords
-  const image =
-    metaImage && metaImage.src
-      ? `${site.siteMetadata.siteUrl}${metaImage.src}`
-      : null
+  // const image =
+  //   metaImage && metaImage.src
+  //     ? `${site.siteMetadata.siteUrl}${metaImage.src}`
+  //     : null
   const canonical = pathname ? `${site.siteMetadata.siteUrl}${pathname}` : null
 
   return (
