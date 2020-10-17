@@ -3,13 +3,17 @@ import Layout from "../Components/Layout/Layout"
 import SEO from "../Components/seo"
 import { useStaticQuery, graphql } from "gatsby"
 
-export default function Home({location}) {
+export default function Home() {
   const { site } = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
-            siteImage
+            siteImage {
+              src,
+              width,
+              height
+            }
           }
         }
       }
