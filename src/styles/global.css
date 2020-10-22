@@ -1,3 +1,8 @@
+
+body {
+  margin: 0
+}
+
 @keyframes title {
 0% {
   transform: translateX(-2%);

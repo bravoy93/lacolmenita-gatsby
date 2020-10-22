@@ -1,11 +1,22 @@
 import React, {useState} from "react"
-// import Nav from "../Nav/Nav"
+import Nav from "../Nav/Nav"
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 // import Backdrop from "../Backdrop/Backdrop"
 // import Toolbar from "../Toolbar/Toolbar"
 // import Footer from "../Footer/Footer"
 import "typeface-roboto"
+import theme from "../../theme"
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
-export default function Layout({children}) {
+export default function Layout({children, pageSelected}) {
+  const scrolled = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 50
+  });
+
+  // const [pageSelected, setPageSelected] = useState()
+
   // const [toolbarOpen, setToolbarOpen] = useState(false);
   // const [scrolled, setScrolled] = useState(false);  
 
@@ -42,19 +53,23 @@ export default function Layout({children}) {
   // }
 
   return (
-    <>      
-      {/* <Nav 
-        toolbarToggleClickHandler={toolbarToggleClickHandler}
-        scrolled={scrolled}
-        to_top={toTop}/>
-      <div id="nav"/>
+    <React.Fragment>
+      <CssBaseline />
+      <ThemeProvider theme={theme}>
+      <Nav scrolled={scrolled} pageSelected={pageSelected}/>
+      {/*<Nav */}
+      {/*  toolbarToggleClickHandler={toolbarToggleClickHandler}*/}
+      {/*  scrolled={scrolled}*/}
+      {/*  to_top={toTop}/>*/}
+      {/*<div id="nav"/>*/}
       {children}
-      {backdrop}
-      <Toolbar
-        show={toolbarOpen}
-        backdropClickHandler={backdropClickHandler}
-        to_top={toTop}/>
-      <Footer to_top={toTop}/> */}
-    </>
+      {/*{backdrop}*/}
+      {/*<Toolbar*/}
+      {/*  show={toolbarOpen}*/}
+      {/*  backdropClickHandler={backdropClickHandler}*/}
+      {/*  to_top={toTop}/>*/}
+      {/*<Footer to_top={toTop}/> */}
+    </ThemeProvider>
+    </React.Fragment>    
   )
 }
