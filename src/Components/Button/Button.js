@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Button({children, type='gradient'}) {
+export default function Button({children, type=''}) {
   const classes = useStyles();
   return (
     <MaterialButton className={classes[type]}>
