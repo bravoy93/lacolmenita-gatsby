@@ -1,6 +1,6 @@
 import React, {useRef} from "react";
 import { AppBar, Toolbar} from "@material-ui/core";
-import MenuIcon from "./MenuIcon";
+import ColmenitaIcon from "./ColmenitaIcon";
 import NavItem, {NavLinkStyles} from "./NavItem";
 import { makeStyles } from '@material-ui/core/styles';
 // import Button from "../Button/Button";
@@ -24,6 +24,7 @@ export default function Nav({scrolled, pageSelected}) {
       },
       appBar: {
         backgroundColor: 'rgba(0,0,0,0)',
+        maxHeight: '80px',
         transition: 'all 300ms ease-out',
         '&.scrolled': {
           backgroundColor: palette.primary.main
@@ -51,7 +52,7 @@ export default function Nav({scrolled, pageSelected}) {
       <AppBar className={`${classes.appBar} ${scrolled ? 'scrolled' : ''}`} elevation={scrolled ? 4 : 0} >
         <Toolbar>
           <Link to="/">
-            <MenuIcon dark size={60}/>
+            <ColmenitaIcon dark size={scrolled ? 70 : 80}/>
           </Link>
          <nav className={classes.navBar}>
            <ul>

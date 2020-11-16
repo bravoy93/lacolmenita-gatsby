@@ -6,16 +6,16 @@ const useStyles = makeStyles((theme) => ({
     root: {
       textDecoration: "none",
       fontSize: "18px",
-      color: theme.palette.secondary.main,
+      color: theme.palette.secondary.light,
       borderRadius: "3px",
       padding: "8px 16px",
       margin: "0 4px",
       transition: "all 300ms ease-in",
       "&:hover": {
-        backgroundColor: `${theme.palette.secondary.main}40`,
-        borderColor: theme.palette.secondary.main,
+        backgroundColor: `${theme.palette.secondary.light}40`,
+        borderColor: theme.palette.secondary.light,
         transition: "backgroundColor 600ms ease-out",
-        borderBottom: `solid 2px ${theme.palette.secondary.main}`
+        borderBottom: `solid 2px ${theme.palette.secondary.light}`
       }
     },
     selectedMaterial: {
@@ -27,10 +27,10 @@ const useStyles = makeStyles((theme) => ({
       transition: "all 600ms ease-out"
     },
     selected: {
-      backgroundColor: `${theme.palette.secondary.main}40`,
-      borderColor: theme.palette.secondary.main,
+      backgroundColor: `${theme.palette.secondary.light}40`,
+      borderColor: theme.palette.secondary.light,
       transition: "backgroundColor 600ms ease-out",
-      borderBottom: `solid 2px ${theme.palette.secondary.main}`
+      borderBottom: `solid 2px ${theme.palette.secondary.light}`
     }
   })
 )
