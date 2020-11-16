@@ -59,7 +59,7 @@ const hotjar = <script
 
 const microdata = <script
   async
-  key={`uh-microdata`}
+  key={`lacolmenita-microdata`}
   type={`application/ld+json`}
   dangerouslySetInnerHTML={{
     __html: `
@@ -67,24 +67,24 @@ const microdata = <script
       "@context": "https://schema.org",
       "@type": "Organization",
       "url": "https://lacolmenita.netlify.app",
-      "logo": "https://unifiedhealth.com/aws/images/blue+full+.svg",
-      "image": ["https://cfd-web.s3.us-east-2.amazonaws.com/images/blue%2Bbox%2Bfull.svg"],
+      "logo": "https://lacolmenita.imgix.net/gaTifPU.png?width=512&height=512&format=webp",
+      "image": ["https://lacolmenita.imgix.net/gaTifPU.png?width=512&height=512&format=webp"],
       "@id": "https://lacolmenita.netlify.app",
-      "name": "Unified Health",
+      "name": "La Colmenita",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "13621 NW 12th Street",
-        "addressLocality": "Sunrise",
-        "addressRegion": "FL",
-        "postalCode": "33323",
-        "addressCountry": "US"
+        "streetAddress": "13 e/ F y G, Vedado",
+        "addressLocality": "Plaza de la Revolución",
+        "addressRegion": "La Habana",
+        "postalCode": "10400",
+        "addressCountry": "CU"
       },
       "geo": {
         "@type": "GeoCoordinates",
         "latitude": 26.13660400000001,
         "longitude": -80.33222900000001
       },
-      "telephone": "+18559310267",
+      "telephone": "+5378454697",
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
@@ -104,10 +104,10 @@ const microdata = <script
   }}
 />
 
-// const HeadComponents = [fbPixel, gtag, gtagInlineScript, microdata]
+const HeadComponents = [/*fbPixel, gtag, gtagInlineScript,*/ microdata]
 const PostBodyComponents = [hotjar]
 
 exports.onRenderBody = ({setHeadComponents, setPostBodyComponents}) => {
-  // setHeadComponents(HeadComponents)
+  setHeadComponents(HeadComponents)
   setPostBodyComponents(PostBodyComponents)
 }
