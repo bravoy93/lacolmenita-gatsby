@@ -1,6 +1,8 @@
 import React from "react";
 import ColmenitaIcon from "../Nav/ColmenitaIcon"
 import { makeStyles } from "@material-ui/core/styles"
+import useMediaQuery from "@material-ui/core/useMediaQuery"
+import { useTheme } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
     footer: {
@@ -11,20 +13,42 @@ const useStyles = makeStyles((theme) => ({
       padding: '12px',
       transition: "all 300ms ease-in",
       minHeight: '400px',
+      width: '100vw'
     },
     footerRow: {
       padding: '0',
+      margin: '0',
       width: '100%',
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      overflow: 'scroll'
     },
     footerCopyright: {
-      padding: '20px 0'
+      padding: '20px 0',
+      textAlign: 'center',
+      [theme.breakpoints.only('xs')]: {
+        paddingTop: '30px'
+      }
     },
     sponsor: {
       listStyle: 'none',
-      padding: '4px 24px',
+      padding: '0 24px 4px 24px',
+      transition: 'all 150ms ease-in',
+      '& a': {
+        textDecoration: 'none'
+      },
+      '&:hover': {
+        transform: 'scale(1.01)',
+        filter: 'saturate(0)'
+      },
+      [theme.breakpoints.between('xs','sm')]: {
+        padding: '0 14px 14px 14px',
+      }
+    },
+    socialNetwork: {
+      listStyle: 'none',
+      padding: '4px 8px',
       transition: 'all 150ms ease-in',
       '& a': {
         textDecoration: 'none'
@@ -39,43 +63,87 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Footer() {
   const classes = useStyles();
-  const Sponsor = ({sponsorImgixId, name, href, size=45}) => 
-  <li className={classes.sponsor}>
+  const theme = useTheme();
+  const xs = useMediaQuery(theme.breakpoints.down('xs'));
+  const sm = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+
+  const FooterItem = ({type='sponsor',itemImgixId, name, href, size= xs ? 38 : sm ? 40 : 45}) => 
+  <li className={classes[type]}>
     <a title={name} href={href} target="_blank" rel="noreferrer">
-      <img src={`https://lacolmenita.imgix.net/${sponsorImgixId}.png?height=${size}&format=webp`} alt={name} height={`${size}px`}/>
+      <img src={`https://lacolmenita.imgix.net/${itemImgixId}.png?height=${size}&format=webp`} alt={name} height={`${size}px`}/>
     </a>
   </li>
+
+const SponsorsContainer = ({children}) => 
+  xs ?
+    <>
+      <ul className={classes.footerRow}>{children.slice(0,3)}</ul>
+      <ul className={classes.footerRow}>{children.slice(3)}</ul>
+    </>
+    : <ul className={classes.footerRow}>{children}</ul>
 
   return (
     <div className={classes.footer}>
       <div className={classes.footerRow}>
-        <ColmenitaIcon size={340} dark description/>
+        <ColmenitaIcon size={xs ? 310 : 340} dark description/>
+      </div>
+      <SponsorsContainer>
+        <FooterItem 
+          name="Ministerio de Cultura de la República Cuba" 
+          itemImgixId="A6ZpBWJ"
+          href="http://www.mincult.gob.cu/"/>
+        <FooterItem 
+          name="Departamento de Artes Escénicas del Mincult"
+          itemImgixId="JijbeAx"
+          href="http://www.cubaescena.cult.cu/"/>
+        <FooterItem 
+          name="Centro de Teatro de Cuba"
+          itemImgixId="JQaNqxv"
+          href="http://www.cubaescena.cult.cu/"/>
+        <FooterItem 
+          name="Fondo de las Naciones Unidas para la Infancia (Unicef)"
+          itemImgixId="yWPqlIx"
+          href="https://www.unicef.org/"/>
+        <FooterItem 
+          name="Grupo Excelencias"
+          itemImgixId="yvvpUIo"
+          href="http://www.excelencias.com/"/>
+      </SponsorsContainer>
+      <div className={classes.footerRow}>
+  <span className={classes.footerCopyright}>© 2020 La Colmenita de Cuba. Todos los derechos reservados.</span>
       </div>
       <ul className={classes.footerRow}>
-        <Sponsor 
-          name="Ministerio de Cultura de la República Cuba" 
-          sponsorImgixId="A6ZpBWJ"
-          href="http://www.mincult.gob.cu/"/>
-        <Sponsor 
-          name="Departamento de Artes Escénicas del Mincult"
-          sponsorImgixId="JijbeAx"
-          href="http://www.cubaescena.cult.cu/"/>
-        <Sponsor 
-          name="Centro de Teatro de Cuba"
-          sponsorImgixId="JQaNqxv"
-          href="http://www.cubaescena.cult.cu/"/>
-        <Sponsor 
-          name="Fondo de las Naciones Unidas para la Infancia (Unicef)"
-          sponsorImgixId="yWPqlIx"
-          href="https://www.unicef.org/"/>
-        <Sponsor 
-          name="Grupo Excelencias"
-          sponsorImgixId="yvvpUIo"
-          href="http://www.excelencias.com/"/>
+        <FooterItem
+          type="socialNetwork"
+          name="Página de La Colmenita en Facebook" 
+          itemImgixId="Ga51pqU"
+          size={32}
+          href="http://www.facebook.com/lacolmenita"/>
+        <FooterItem 
+          type="socialNetwork"
+          name="Perfil de La Colmenita en Twitter"
+          itemImgixId="gafQdPg"
+          size={32}
+          href="http://www.twitter.com/lacolmenita"/>
+        <FooterItem 
+          type="socialNetwork"
+          name="Perfil de La Colmenita en Instagram"
+          itemImgixId="JmlqTqF"
+          size={32}
+          href="http://www.instagram.com/colmenitacubana"/>
+        <FooterItem 
+          type="socialNetwork"
+          name="Canal de La Colmenita en Youtube"
+          itemImgixId="7PI6BsH"
+          size={32}
+          href="https://www.youtube.com/lacolmenita"/>
+        <FooterItem 
+          type="socialNetwork"
+          name="Canal de La Colmenita en Telegram"
+          itemImgixId="Y7FF7vX"
+          size={32}
+          href="https://t.me/lacolmenita"/>
       </ul>
-      <div className={classes.footerRow}>
-       <span className={classes.footerCopyRight}>© 2020 La Colmenita de Cuba. Todos los derechos reservados</span>
-      </div>
     </div>
   )
 }

@@ -9,6 +9,7 @@ import {Link} from "gatsby";
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {RSpacer, RMenu} from "../Custom"
+import useMediaQuery from "@material-ui/core/useMediaQuery"
 
 export default function Nav({scrolled, pageSelected}) {
   const useStyles = makeStyles(({palette})=>
@@ -32,20 +33,64 @@ export default function Nav({scrolled, pageSelected}) {
       },
       navBar: {
         width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
         '& ul': {
           listStyleType: 'none',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'flex-end'
+          justifyContent: 'flex-end',        
         }
-      }
+      },
+      HamburgerMenu: {
+        display: 'flex',        
+        border: 'none',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        height: '38px',
+        background: 'transparent',
+        padding: '0',
+        margin: '4px',
+        '& div': {
+          width: '15px',
+          height: '5px',
+          borderRadius: '1px',
+          backgroundColor: palette.secondary.light,
+          '&:focus': {
+            transform: 'scale(1.01)',
+          }
+        },
+        '& div:nth-child(2)': {
+          width: '32px',
+        }        
+      },
     })
-    )
-
+  );
   const classes = useStyles();
   const qsRef = useRef(null);
+  const [qsMenu, setQsMenu] = React.useState(false);
+  const xs = useMediaQuery('(max-width:600px)');
 
-  const [qsMenu, setQsMenu] = React.useState(false)
+  const HamburgerMenu = ({onClick}) =>
+    <button className={classes.HamburgerMenu} onClick={onClick} onKeyPress={onClick} aria-label="Toggle Drawable Menu">
+      <div />
+      <div />
+      <div />
+    </button>
+
+  const ToolbarMenu = () => xs ?
+    <HamburgerMenu />
+    : <ul>
+        <NavItem to="/quienes-somos" label="Quiénes Somos" pageSelected={pageSelected} ref={qsRef}
+                 onClick={()=> setQsMenu(!qsMenu)}/>
+        <NavItem to="/noticias" label="Noticias" pageSelected={pageSelected}/>
+        <NavItem to="/testimonios" label="Testimonios" pageSelected={pageSelected}/>
+        <NavItem to="/eventos" label="Eventos" pageSelected={pageSelected}/>
+        <NavItem to="/blog" label="Blog" pageSelected={pageSelected}/>
+        <NavItem to="/contacto" label="Contacto" pageSelected={pageSelected}/>
+      </ul>
 
   return (
     <React.Fragment>
@@ -54,17 +99,9 @@ export default function Nav({scrolled, pageSelected}) {
           <Link to="/">
             <ColmenitaIcon dark size={scrolled ? 70 : 80}/>
           </Link>
-         <nav className={classes.navBar}>
-           <ul>
-             <NavItem to="/quienes-somos" label="Quiénes Somos" pageSelected={pageSelected} ref={qsRef}
-                      onClick={()=> setQsMenu(!qsMenu)}/>
-             <NavItem to="/noticias" label="Noticias" pageSelected={pageSelected}/>
-             <NavItem to="/testimonios" label="Testimonios" pageSelected={pageSelected}/>
-             <NavItem to="/eventos" label="Eventos" pageSelected={pageSelected}/>
-             <NavItem to="/blog" label="Blog" pageSelected={pageSelected}/>
-             <NavItem to="/contacto" label="Contacto" pageSelected={pageSelected}/>
-           </ul>
-         </nav>
+          <nav className={classes.navBar}>
+            <ToolbarMenu />
+          </nav>
           <RMenu anchor={qsRef} value={qsMenu} y-nudge={40}/>
         </Toolbar>
       </AppBar>
