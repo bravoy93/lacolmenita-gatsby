@@ -12,8 +12,7 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: `0 -5px 10px -1px rgba(0,0,0,.2)`,
       padding: '12px',
       transition: "all 300ms ease-in",
-      minHeight: '400px',
-      width: '100vw'
+      width: '100%'
     },
     footerRow: {
       padding: '0',
@@ -22,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      overflow: 'scroll'
+      overflow: 'hidden'
     },
     footerCopyright: {
       padding: '20px 0',
