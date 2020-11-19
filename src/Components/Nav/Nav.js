@@ -1,15 +1,16 @@
-import React, {useRef} from "react";
+import React, {useRef, useState} from "react";
 import { AppBar, Toolbar} from "@material-ui/core";
 import ColmenitaIcon from "./ColmenitaIcon";
-import NavItem, {NavLinkStyles} from "./NavItem";
+import NavItem from "./NavItem";
 import { makeStyles } from '@material-ui/core/styles';
-// import Button from "../Button/Button";
-import Button from "@material-ui/core/Button"
 import {Link} from "gatsby";
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import {RSpacer, RMenu} from "../Custom"
-import useMediaQuery from "@material-ui/core/useMediaQuery"
+import {RMenu} from "../Custom";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import SwipeableDrawer  from "@material-ui/core/SwipeableDrawer"
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+// import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 
 export default function Nav({scrolled, pageSelected}) {
   const useStyles = makeStyles(({palette})=>
@@ -66,15 +67,47 @@ export default function Nav({scrolled, pageSelected}) {
           width: '32px',
         }        
       },
+      list: {
+        width: 250,
+        backgroundColor: 'rgba(0,0,0,.7)',
+        color: palette.secondary.light,
+        height: '100%'
+      },
+      drawerPaper: {
+        backgroundColor: 'rgba(0,0,0,.9)',
+      },
+      drawerFooter: {
+        position: 'fixed',
+        bottom: 0,
+        width: '100%',
+        padding: 24
+      },
+      drawerCopyright: {
+        textAlign: 'center',
+        color: '#F2F2F2',
+        opacity: '.8'
+      },
+      drawerLink: {
+        textDecoration: 'none',
+        color: palette.secondary.light,
+        '&:active': {
+          color: '#F2F2F2',
+        }
+      }
     })
   );
   const classes = useStyles();
   const qsRef = useRef(null);
-  const [qsMenu, setQsMenu] = React.useState(false);
+  const [qsMenu, setQsMenu] = useState(false);
+  const [openedDrawer, setOpenedDrawer] = useState(false)
   const xs = useMediaQuery('(max-width:600px)');
 
-  const HamburgerMenu = ({onClick}) =>
-    <button className={classes.HamburgerMenu} onClick={onClick} onKeyPress={onClick} aria-label="Toggle Drawable Menu">
+  const toggleDrawer = (value) => {
+    setOpenedDrawer(typeof value === 'boolean' ? !openedDrawer : value)
+  };
+
+  const HamburgerMenu = () =>
+    <button className={classes.HamburgerMenu} onClick={toggleDrawer} onKeyPress={toggleDrawer} aria-label="Toggle Drawable Menu">
       <div />
       <div />
       <div />
@@ -83,14 +116,42 @@ export default function Nav({scrolled, pageSelected}) {
   const ToolbarMenu = () => xs ?
     <HamburgerMenu />
     : <ul>
-        <NavItem to="/quienes-somos" label="Quiénes Somos" pageSelected={pageSelected} ref={qsRef}
-                 onClick={()=> setQsMenu(!qsMenu)}/>
-        <NavItem to="/noticias" label="Noticias" pageSelected={pageSelected}/>
-        <NavItem to="/testimonios" label="Testimonios" pageSelected={pageSelected}/>
+        <NavItem to="/" label="Quiénes Somos" pageSelected={pageSelected} ref={qsRef}
+                 onClick={()=> setQsMenu(!qsMenu)}/>        
+        <NavItem to="/testimonios" label="Obras" pageSelected={pageSelected}/>
         <NavItem to="/eventos" label="Eventos" pageSelected={pageSelected}/>
         <NavItem to="/blog" label="Blog" pageSelected={pageSelected}/>
         <NavItem to="/contacto" label="Contacto" pageSelected={pageSelected}/>
       </ul>
+
+  const list = () => (
+    <div
+      className={classes.list}
+      role="presentation"
+      onClick={() => toggleDrawer(false)}
+      onKeyDown={() => toggleDrawer(false)}
+    >
+      <List>
+        {[
+          {to: '/', label: 'Quiénes Somos'},
+          {to: '/testimonios', label: 'Obras'},
+          {to: '/eventos', label: 'Eventos'},
+          {to: '/blog', label: 'Blog'},
+          {to: '/contacto', label: 'Contacto'}
+          ].map( link => (
+          <Link to={link.to} className={classes.drawerLink}>
+            <ListItem button key={link.label}>            
+                <ListItemText primary={link.label} />
+              {/* <ListItemIcon> icon </ListItemIcon> */}
+            </ListItem>
+          </Link>
+        ))}
+      </List>
+      <div className={classes.drawerFooter}>
+        <span className={classes.drawerCopyright}>La Colmenita de Cuba ©2020</span>
+      </div>
+    </div>
+  );
 
   return (
     <React.Fragment>
@@ -105,6 +166,17 @@ export default function Nav({scrolled, pageSelected}) {
           <RMenu anchor={qsRef} value={qsMenu} y-nudge={40}/>
         </Toolbar>
       </AppBar>
+      <SwipeableDrawer
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+            anchor='right'
+            open={openedDrawer}
+            onClose={() => toggleDrawer(false)}
+            onOpen={() => toggleDrawer(true)}
+          >
+            {list()}
+          </SwipeableDrawer>
     </React.Fragment>
   )
 }

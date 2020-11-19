@@ -40,8 +40,12 @@ const NavItem = React.forwardRef(({ label, to, pageSelected, onClick=()=>{} }, r
   const selected = pageSelected === to
 
   return (
-    <li ref={ref} onClick={onClick} onKeyPress={onClick}>
-      <Link to={to} className={`${classes.root} ${selected ? classes.selected : null}`}>{label}
+    <li ref={ref} >
+      <Link to={to} 
+            className={`${classes.root} ${selected ? classes.selected : null}`}
+            onClick={onClick} 
+            onKeyPress={onClick}>
+              {label}
       <span className="MuiTouchRipple-root"> </span>
       </Link>
     </li>

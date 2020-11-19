@@ -117,13 +117,13 @@ const SponsorsContainer = ({children}) =>
           name="Página de La Colmenita en Facebook" 
           itemImgixId="Ga51pqU"
           size={32}
-          href="http://www.facebook.com/lacolmenita"/>
+          href="https://www.facebook.com/La-Colmenita-de-Cuba-101503491317669/"/>
         <FooterItem 
           type="socialNetwork"
           name="Perfil de La Colmenita en Twitter"
           itemImgixId="gafQdPg"
           size={32}
-          href="http://www.twitter.com/lacolmenita"/>
+          href="https://twitter.com/ColmenitaDe"/>
         <FooterItem 
           type="socialNetwork"
           name="Perfil de La Colmenita en Instagram"
@@ -135,7 +135,7 @@ const SponsorsContainer = ({children}) =>
           name="Canal de La Colmenita en Youtube"
           itemImgixId="7PI6BsH"
           size={32}
-          href="https://www.youtube.com/lacolmenita"/>
+          href="https://www.youtube.com/channel/UCkYqTQtkHILK3lVFzyq-lxA"/>
         <FooterItem 
           type="socialNetwork"
           name="Canal de La Colmenita en Telegram"
