@@ -1,6 +1,6 @@
 import React, {useRef, useState} from "react";
 import { AppBar, Toolbar} from "@material-ui/core";
-import ColmenitaIcon from "./ColmenitaIcon";
+import ColmenitaIcon from "../Custom/ColmenitaIcon/ColmenitaIcon";
 import NavItem from "./NavItem";
 import { makeStyles } from '@material-ui/core/styles';
 import {Link} from "gatsby";
@@ -8,9 +8,6 @@ import {RMenu} from "../Custom";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import SwipeableDrawer  from "@material-ui/core/SwipeableDrawer"
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-// import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 
 export default function Nav({scrolled, pageSelected}) {
   const useStyles = makeStyles(({palette})=>
@@ -74,25 +71,46 @@ export default function Nav({scrolled, pageSelected}) {
         height: '100%'
       },
       drawerPaper: {
-        backgroundColor: 'rgba(0,0,0,.9)',
+        backgroundColor: palette.primary.main,
       },
       drawerFooter: {
         position: 'fixed',
         bottom: 0,
-        width: '100%',
-        padding: 24
+        margin: '0 auto',
+        width: 250,
+        padding: '24px 0',
+        textAlign: 'center',
       },
       drawerCopyright: {
         textAlign: 'center',
         color: '#F2F2F2',
-        opacity: '.8'
+        opacity: '.8',
+        fontSize: '14px',        
       },
-      drawerLink: {
-        textDecoration: 'none',
-        color: palette.secondary.light,
-        '&:active': {
-          color: '#F2F2F2',
+      drawerList: {
+        paddingTop: '20px',
+        '& li': {
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: `0 -5px 10px -1px rgba(0,0,0,.2)`,
+          '& a': {
+            textDecoration: 'none',
+            padding: 8,
+            width: '100%',
+            textAlign: 'center',
+            color: palette.secondary.light,
+            fontSize: 24,
+            '&:hover': {
+            color: palette.primary.main,
+            backgroundColor: palette.secondary.light,
+          },
+          }
         }
+      },
+      drawerLogoRow: {
+        textAlign: 'center',
+        background: `linear-gradient(#fff, ${palette.secondary.main})`,
       }
     })
   );
@@ -131,20 +149,20 @@ export default function Nav({scrolled, pageSelected}) {
       onClick={() => toggleDrawer(false)}
       onKeyDown={() => toggleDrawer(false)}
     >
-      <List>
+      <List className={classes.drawerList}>
         {[
+          {to: '/', label: 'Inicio'},
           {to: '/', label: 'Quiénes Somos'},
           {to: '/testimonios', label: 'Obras'},
           {to: '/eventos', label: 'Eventos'},
           {to: '/blog', label: 'Blog'},
           {to: '/contacto', label: 'Contacto'}
           ].map( link => (
-          <Link to={link.to} className={classes.drawerLink}>
-            <ListItem button key={link.label}>            
-                <ListItemText primary={link.label} />
-              {/* <ListItemIcon> icon </ListItemIcon> */}
-            </ListItem>
-          </Link>
+          <li key={link.label}>
+            <Link to={link.to}>
+              {link.label}
+            </Link>
+          </li>
         ))}
       </List>
       <div className={classes.drawerFooter}>
@@ -175,6 +193,9 @@ export default function Nav({scrolled, pageSelected}) {
             onClose={() => toggleDrawer(false)}
             onOpen={() => toggleDrawer(true)}
           >
+            <Link to="/" className={classes.drawerLogoRow}>
+              <ColmenitaIcon dark variant="svg" size={180}/>
+            </Link>
             {list()}
           </SwipeableDrawer>
     </React.Fragment>

@@ -40,7 +40,7 @@ const NavItem = React.forwardRef(({ label, to, pageSelected, onClick=()=>{} }, r
   const selected = pageSelected === to
 
   return (
-    <li ref={ref} >
+    <li ref={ref} key={label}>
       <Link to={to} 
             className={`${classes.root} ${selected ? classes.selected : null}`}
             onClick={onClick} 

@@ -1,5 +1,5 @@
 import React from "react";
-import ColmenitaIcon from "../Nav/ColmenitaIcon"
+import ColmenitaIcon from "../Custom/ColmenitaIcon/ColmenitaIcon"
 import { makeStyles } from "@material-ui/core/styles"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import { useTheme } from '@material-ui/core/styles'
