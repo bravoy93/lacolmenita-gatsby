@@ -10,7 +10,7 @@ import SwipeableDrawer  from "@material-ui/core/SwipeableDrawer"
 import List from '@material-ui/core/List';
 
 export default function Nav({scrolled, pageSelected}) {
-  const useStyles = makeStyles(({palette})=>
+  const useStyles = makeStyles(({palette, breakpoints})=>
     ({
       gradient: {
         background: 'linear-gradient(45deg, #F19800 30%, #FED10F 90%)',
@@ -38,7 +38,10 @@ export default function Nav({scrolled, pageSelected}) {
           listStyleType: 'none',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'flex-end',        
+          justifyContent: 'flex-end',
+          [breakpoints.only('xs')]: {
+            display: 'none'
+          }    
         }
       },
       HamburgerMenu: {
