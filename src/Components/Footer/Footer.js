@@ -3,6 +3,7 @@ import ColmenitaIcon from "../Custom/ColmenitaIcon/ColmenitaIcon"
 import { makeStyles } from "@material-ui/core/styles"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import { useTheme } from '@material-ui/core/styles'
+import {Link} from "gatsby"
 
 const useStyles = makeStyles((theme) => ({
     footer: {
@@ -84,7 +85,9 @@ const SponsorsContainer = ({children}) =>
   return (
     <div className={classes.footer}>
       <div className={classes.footerRow}>
-        <ColmenitaIcon size={xs ? 310 : 340} dark description/>
+        <Link to="/">
+          <ColmenitaIcon size={xs ? 310 : 340} dark description variant="svg"/>
+        </Link>
       </div>
       <SponsorsContainer>
         <FooterItem 

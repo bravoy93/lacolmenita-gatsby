@@ -121,7 +121,11 @@ export default function Nav({scrolled, pageSelected}) {
   const xs = useMediaQuery('(max-width:600px)');
 
   const toggleDrawer = (value) => {
-    setOpenedDrawer(typeof value === 'boolean' ? !openedDrawer : value)
+    // if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    //   return;
+    // }
+
+    setOpenedDrawer(typeof value === 'boolean' ? value : !openedDrawer)
   };
 
   const HamburgerMenu = () =>
@@ -166,7 +170,7 @@ export default function Nav({scrolled, pageSelected}) {
         ))}
       </List>
       <div className={classes.drawerFooter}>
-        <span className={classes.drawerCopyright}>La Colmenita de Cuba ©2020</span>
+        <span className={classes.drawerCopyright}>© {new Date().getFullYear()} La Colmenita de Cuba</span>
       </div>
     </div>
   );
@@ -176,7 +180,7 @@ export default function Nav({scrolled, pageSelected}) {
       <AppBar className={`${classes.appBar} ${scrolled ? 'scrolled' : ''}`} elevation={scrolled ? 4 : 0} >
         <Toolbar>
           <Link to="/">
-            <ColmenitaIcon dark size={scrolled ? 70 : 80}/>
+            <ColmenitaIcon dark size={scrolled ? 70 : 80} variant="svg"/>
           </Link>
           <nav className={classes.navBar}>
             <ToolbarMenu />
