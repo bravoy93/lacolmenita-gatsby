@@ -3,10 +3,11 @@ import Layout from "../Components/Layout/Layout"
 import SEO from "../Components/seo"
 import { useStaticQuery, graphql } from "gatsby"
 import { makeStyles } from '@material-ui/core/styles';
+import Hero from "../Components/HeroSection/Hero"
 
 const useStyles = makeStyles({
   heroSection: {
-    height: '200vh',
+    height: '100%',
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
@@ -32,17 +33,19 @@ export default function Home() {
     `
   )
 
+  const image = {
+    src:site.siteMetadata.siteImage.src,
+    width: parseInt(site.siteMetadata.siteImage.width),
+    height: parseInt(site.siteMetadata.siteImage.height),
+  }
   const classes = useStyles();
 
   return (
     <Layout pageSelected="/">
       <SEO title="Home"
       pathname="/"
-      image={site.siteImage}/>
-      <div className={classes.heroSection}>
-        <h1>Bienvenido</h1>
-      </div>
-      
+      image={image}/>
+      <Hero />
     </Layout>
   )
 }

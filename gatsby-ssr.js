@@ -2,7 +2,7 @@ const React = require("react")
 
 const fbPixel = <script
 async
-key={`uh-facebook-pixel`}
+key={`lacolmenita-facebook-pixel`}
 dangerouslySetInnerHTML={{
   __html: `
   !function(f,b,e,v,n,t,s)
@@ -21,13 +21,13 @@ dangerouslySetInnerHTML={{
 
 const gtag = <script
   async
-  key={`uh-gtag`}
-  src={`https://unifiedhealthadvisors.com/gtagm/gtag/js?id=UA-144175240-1`}
+  key={`lacolmenita-gtag`}
+  src={`https://lacolmenita.netlify.app/gtagm/gtag/js?id=UA-xxxxxxxxx-1`}
 />
 
 const gtagInlineScript = <script
   async
-  key={`uh-gtag-inline-script`}
+  key={`lacolmenita-gtag-inline-script`}
   dangerouslySetInnerHTML={{
     __html: `
     window.dataLayer = window.dataLayer || [];
@@ -42,7 +42,7 @@ const gtagInlineScript = <script
 
 const hotjar = <script
   async
-  key={`uh-hotjar`}
+  key={`lacolmenita-hotjar`}
   dangerouslySetInnerHTML={{
     __html: `
       (function(h,o,t,j,a,r){

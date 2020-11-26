@@ -8,6 +8,7 @@ import {RMenu} from "../Custom";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import SwipeableDrawer  from "@material-ui/core/SwipeableDrawer"
 import List from '@material-ui/core/List';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 export default function Nav({scrolled, pageSelected}) {
   const useStyles = makeStyles(({palette, breakpoints})=>
@@ -180,6 +181,7 @@ export default function Nav({scrolled, pageSelected}) {
 
   return (
     <React.Fragment>
+      <CssBaseline />
       <AppBar className={`${classes.appBar} ${scrolled ? 'scrolled' : ''}`} elevation={scrolled ? 4 : 0} >
         <Toolbar>
           <Link to="/">

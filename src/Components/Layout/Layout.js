@@ -4,8 +4,8 @@ import { /*makeStyles,*/ ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 // import Backdrop from "../Backdrop/Backdrop"
 // import Toolbar from "../Toolbar/Toolbar"
-import Footer from "../Footer/Footer"
-import "typeface-roboto"
+import Footer from "../Footer/Footer";
+import "fontsource-asap"
 import theme from "../../theme"
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 

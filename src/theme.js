@@ -1,4 +1,17 @@
 import { createMuiTheme } from '@material-ui/core/styles';
+import LaColmenitaFontWoof from './Fonts/LaColmenitaFont__.woff';
+
+const LaColmenita = {
+  fontFamily: '"La Colmenita"',
+  fontStyle: 'normal',
+  fontDisplay: 'swap',
+  fontWeight: 400,
+  src: ` 
+    local('LaColmenitaFont__.woff'),
+    url(${LaColmenitaFontWoof}) format('woff')
+  `
+}
+
 
 const theme = createMuiTheme({
   palette: {
@@ -34,6 +47,25 @@ const theme = createMuiTheme({
       light: '#ffb74d',
       dark: '#f57c00'
     }
+  },
+  typography: {
+    fontFamily: [
+      'Asap',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+  },
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        '@font-face': [LaColmenita],
+      },
+    },
   },
 });
 

@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import { makeStyles } from "@material-ui/core/styles"
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -40,7 +41,9 @@ const NavItem = React.forwardRef(({ label, to, pageSelected, onClick=()=>{} }, r
   const selected = pageSelected === to
 
   return (
-    <li ref={ref} key={label}>
+    <React.Fragment>
+      <CssBaseline />
+      <li ref={ref} key={label}>
       <Link to={to} 
             className={`${classes.root} ${selected ? classes.selected : null}`}
             onClick={onClick} 
@@ -49,6 +52,7 @@ const NavItem = React.forwardRef(({ label, to, pageSelected, onClick=()=>{} }, r
       <span className="MuiTouchRipple-root"> </span>
       </Link>
     </li>
+    </React.Fragment>
   )
 })
 
