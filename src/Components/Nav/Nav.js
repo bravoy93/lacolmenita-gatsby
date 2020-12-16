@@ -24,6 +24,7 @@ export default function Nav({scrolled, pageSelected}) {
       },
       appBar: {
         backgroundColor: 'rgba(0,0,0,0)',
+        // backgroundColor: palette.primary.main,
         maxHeight: '80px',
         transition: 'all 300ms ease-out',
         '&.scrolled': {

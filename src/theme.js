@@ -1,5 +1,9 @@
 import { createMuiTheme } from '@material-ui/core/styles';
+import LaColmenitaFontWoof2 from './Fonts/LaColmenitaFont__.woff2';
 import LaColmenitaFontWoof from './Fonts/LaColmenitaFont__.woff';
+import SegoeScriptWoof2 from './Fonts/segoesc.woff2';
+import SegoeScriptWoof from './Fonts/segoesc.woff';
+
 
 const LaColmenita = {
   fontFamily: '"La Colmenita"',
@@ -7,8 +11,23 @@ const LaColmenita = {
   fontDisplay: 'swap',
   fontWeight: 400,
   src: ` 
+    local('LaColmenitaFont__.woff2'),
+    url(${LaColmenitaFontWoof2}) format('woff2'),
     local('LaColmenitaFont__.woff'),
     url(${LaColmenitaFontWoof}) format('woff')
+  `
+}
+
+const SegoeScript = {
+  fontFamily: '"Segoe Script"',
+  fontStyle: 'normal',
+  fontDisplay: 'swap',
+  fontWeight: 'bold',
+  src: ` 
+    local('segoesc.woff2'),
+    url(${SegoeScriptWoof2}) format('woff2'),
+    local('segoesc.woff'),
+    url(${SegoeScriptWoof}) format('woff')
   `
 }
 
@@ -63,7 +82,7 @@ const theme = createMuiTheme({
   overrides: {
     MuiCssBaseline: {
       '@global': {
-        '@font-face': [LaColmenita],
+        '@font-face': [LaColmenita, SegoeScript],
       },
     },
   },
