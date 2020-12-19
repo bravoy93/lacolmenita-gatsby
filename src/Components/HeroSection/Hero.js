@@ -2,9 +2,9 @@ import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Button, Hidden } from "@material-ui/core";
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Icon from '@mdi/react'
-import { mdiDramaMasks, mdiArrowRight } from '@mdi/js';
-import Mask from '../Custom/Masks/Mask';
+import ShapeDivider from "../Custom/ShapeDivider/ShapeDivider";
+// import Icon from '@mdi/react';
+// import { mdiDramaMasks, mdiArrowRight } from '@mdi/js';
 
 const useStyles = makeStyles(({palette, breakpoints, spacing})=>
     ({
@@ -52,13 +52,8 @@ const useStyles = makeStyles(({palette, breakpoints, spacing})=>
           '& .hero-btn': {
             display: 'none'
           },
-        },        
+        },
       },
-      heroMask: {
-        position: 'absolute',
-        bottom: 0,
-        overflow: 'hidden',
-      }
     })
   );
 
@@ -67,17 +62,6 @@ const useStyles = makeStyles(({palette, breakpoints, spacing})=>
 
 export default function Hero() {
   const classes = useStyles()
-  const [maskWidth, setMaskWidth] = React.useState(0);
-  const onResizeUpdate = React.useEffect(()=>{
-    // window.addEventListener('resize', () => console.log('resized!', window));
-    setMaskWidth(window.innerWidth);
-    window.addEventListener('resize', () => setMaskWidth(window.innerWidth));
-    return () => setMaskWidth(window.innerWidth)
-  }, [])
-
-  // const onMount = React.useEffect(()=>{
-    
-  // })
 
   return <React.Fragment>
     <CssBaseline />
@@ -97,19 +81,8 @@ export default function Hero() {
         className="hero-btn"
         size={1}
         color="#FED10F"/> */}
-      </Button>
-      <div className={classes.heroMask}>
-        <Mask size={maskWidth}/>
-      </div>      
+      </Button>      
+      <ShapeDivider color="#FFF"/>
     </div>
-    {/* <div className={classes.parent}>
-      <img className={classes.img} src="https://lacolmenita.imgix.net/D0IoDXY.jpg?format=webp" alt="Logo de la Colmenita"/>
-      <div className={classes.overlay}/>      
-      <div className={classes.content}> 
-      <Typography variant="h1">
-        La Colmenita
-      </Typography>
-      </div>
-    </div> */}
   </React.Fragment>
 }

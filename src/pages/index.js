@@ -4,6 +4,7 @@ import SEO from "../Components/seo"
 import { useStaticQuery, graphql } from "gatsby"
 import { makeStyles } from '@material-ui/core/styles';
 import Hero from "../Components/HeroSection/Hero"
+import QuienesSomos from "../Components/QuienesSomos/QuienesSomos"
 
 const useStyles = makeStyles({
   heroSection: {
@@ -46,6 +47,7 @@ export default function Home() {
       pathname="/"
       image={image}/>
       <Hero />
+      <QuienesSomos />
     </Layout>
   )
 }
