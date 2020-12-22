@@ -10,6 +10,7 @@ const LaColmenita = {
   fontStyle: 'normal',
   fontDisplay: 'swap',
   fontWeight: 400,
+  lineHeight: 0.9,
   src: ` 
     local('LaColmenitaFont__.woff2'),
     url(${LaColmenitaFontWoof2}) format('woff2'),
@@ -78,6 +79,12 @@ const theme = createMuiTheme({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(','),
+    h1: {      
+      lineHeight: 0.9,
+    },
+    h2: {      
+      lineHeight: 0.9,
+    }
   },
   overrides: {
     MuiCssBaseline: {
