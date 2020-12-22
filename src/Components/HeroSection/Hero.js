@@ -118,7 +118,14 @@ const useStyles = makeStyles(({palette, breakpoints, spacing})=>
   );
 
   
-
+const scrollToSection = (section, additional) => {
+  const anchor = document.getElementById(`${section}`).offsetTop + additional;
+  window.scroll({
+    top: anchor,
+    left: 0,
+    behavior: 'smooth'
+  });
+}
 
 export default function Hero() {
   const classes = useStyles()
@@ -142,7 +149,7 @@ export default function Hero() {
           color="#FED10F"/> */}
         </Button>
       </Hidden>      
-      <div className="hexagon" onClick={() => alert('CLicked!')}>
+      <div className="hexagon" onClick={() => scrollToSection('quienes-somos-section', -45)}>
         <div className="hexagon-inside">
           <div className="hexagon-inside-inside">
             <svg className="btn-hexgon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112.6 99.6"><path d="M20.8,69.8a4.1,4.1,0,0,0,0,4l25,43.6a4,4,0,0,0,3.5,2H99.6a4,4,0,0,0,3.4-2l25.3-43.8a4.1,4.1,0,0,0,0-4l-25-43.7a4,4,0,0,0-3.5-2L49.5,24a3.8,3.8,0,0,0-3.4,2L20.8,69.8m-1.8-1L44.3,25a6,6,0,0,1,5.2-3l50.3-.2a6,6,0,0,1,5.2,3l25.1,43.7a6.4,6.4,0,0,1,0,6h0l-25.3,43.8a6.2,6.2,0,0,1-5.2,3H49.3a5.8,5.8,0,0,1-5.2-3L19,74.8A6.4,6.4,0,0,1,19,68.8Z" transform="translate(-18.2 -21.8)"/></svg>

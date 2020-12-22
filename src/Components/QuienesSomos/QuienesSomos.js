@@ -29,7 +29,7 @@ export default function QuienesSomos() {
 
   return <>
     <CssBaseline />
-    <div className={classes.queEsLaColmenitaSection}>
+    <div id='quienes-somos-section' className={classes.queEsLaColmenitaSection}>
     <Typography variant='h2'>
       ¿Qué es La Colmenita?
     </Typography>
