@@ -81,6 +81,8 @@ const theme = createMuiTheme({
     ].join(','),
     h1: {      
       lineHeight: 0.9,
+      fontFamily: '"La Colmenita"',
+
     },
     h2: {      
       lineHeight: 0.9,

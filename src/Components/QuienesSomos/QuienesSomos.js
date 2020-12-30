@@ -59,8 +59,8 @@ export default function QuienesSomos() {
       <Typography variant='h2'>
         ¿Qué es La Colmenita?
       </Typography>
-      <Grid container>
-        <Grid item xs={12} sm={12} md={12} lg={8} align="center" justify="center">
+      <Grid container justify="center">
+        <Grid item xs={12} sm={12} md={12} lg={8} align="center" >
           <Typography>
             Fundado el 14 de febrero de 1990, somos un proyecto pedagógico y artístico integrado, en su mayoría, por niñas y niños de 5 a 14 años que, jugando al teatro, la música y la danza, priorizamos la formación de valores humanos.
           </Typography>
@@ -74,7 +74,7 @@ export default function QuienesSomos() {
           </Typography>
         </Grid>
         <Hidden smDown={true}>
-          <Grid item lg={4} align="center" justify="center">
+          <Grid item lg={4} align="center">
             <ColmeIllustration illustration='kidAsking'/>
           </Grid>
         </Hidden>        

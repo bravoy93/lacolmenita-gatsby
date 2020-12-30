@@ -9,8 +9,9 @@ import "fontsource-asap/400.css";
 import "fontsource-asap/600.css";
 import theme from "../../theme";
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+import PropTypes from "prop-types"
 
-export default function Layout({children, pageSelected}) {
+function Layout({children, pageSelected, coloredNavbar}) {
   const scrolled = useScrollTrigger({
     disableHysteresis: true,
     threshold: 50
@@ -57,7 +58,7 @@ export default function Layout({children, pageSelected}) {
     <React.Fragment>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-      <Nav scrolled={scrolled} pageSelected={pageSelected}/>
+      <Nav scrolled={scrolled || coloredNavbar} pageSelected={pageSelected}/>
       {/*<Nav */}
       {/*  toolbarToggleClickHandler={toolbarToggleClickHandler}*/}
       {/*  scrolled={scrolled}*/}
@@ -74,3 +75,10 @@ export default function Layout({children, pageSelected}) {
     </React.Fragment>    
   )
 }
+
+Layout.propTypes = {
+  pageSelected: PropTypes.string,
+  coloredNavbar: PropTypes.bool
+}
+
+export default Layout
