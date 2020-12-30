@@ -9,7 +9,7 @@ const useStyles = makeStyles(({palette, breakpoints, spacing})=>
     ({
       heroSection: {
         overflow: 'hidden',
-        height: '100vh',
+        height: window ? window.innerHeight : '100vh',
         width: '100%',
         paddingTop: 100, 
         display: 'flex',
@@ -21,7 +21,7 @@ const useStyles = makeStyles(({palette, breakpoints, spacing})=>
         backgroundSize: 'cover',
         textAlign: 'center',
         [breakpoints.only('xs')]: {
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 1)), url("https://lacolmenita.imgix.net/D0IoDXY.jpg?format=webp")`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url("https://lacolmenita.imgix.net/D0IoDXY.jpg?format=webp")`,
         },
         '& h1': {
           fontFamily: '"La Colmenita"',
