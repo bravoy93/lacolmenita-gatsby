@@ -14,6 +14,9 @@ const useStyles = makeStyles(({palette, breakpoints, spacing})=>
         // paddingTop: 40,
         position: 'relative',
         width: '100%',
+        [breakpoints.up('xl')]: {
+          padding: '40px 60px'
+        },
         '& h2': {
           fontFamily: '"La Colmenita"',
           paddingBottom: spacing(4),
@@ -27,6 +30,9 @@ const useStyles = makeStyles(({palette, breakpoints, spacing})=>
           padding: spacing(2),
           [breakpoints.down('sm')]: {
             textAlign: 'center',
+          },
+          [breakpoints.up('xl')]: {
+            fontSize: 20,
           },
           '& a': {
             fontWeight: 900,
@@ -44,7 +50,10 @@ const useStyles = makeStyles(({palette, breakpoints, spacing})=>
           }
         },
         '& svg': {
-          width: 230
+          width: 230,
+          [breakpoints.up('xl')]: {
+            width: 267,
+          }
         }
       },
     })
