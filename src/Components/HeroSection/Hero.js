@@ -9,7 +9,7 @@ const useStyles = makeStyles(({palette, breakpoints, spacing})=>
     ({
       heroSection: {
         overflow: 'hidden',
-        height: window ? window.innerHeight : '100vh',
+        height: window.innerHeight,
         width: '100%',
         paddingTop: 100, 
         display: 'flex',
@@ -31,6 +31,10 @@ const useStyles = makeStyles(({palette, breakpoints, spacing})=>
             padding: '10px 20px',
             // lineHeight: 0.9,
             // marginBottom: 60
+          },
+          [breakpoints.up('xl')]: {
+            fontSize: 110,
+            padding: '50px 20px 10px 20px',
           }
         },
         '& .hero-description': {
@@ -38,6 +42,7 @@ const useStyles = makeStyles(({palette, breakpoints, spacing})=>
           color: '#FFF',
           fontFamily: '"Segoe Script"',
           fontSize: 20,
+          maxWidth: 1263,
           // [breakpoints.only('xs')]: {
           //   fontSize: 16,
           //   padding: 16,
@@ -111,9 +116,12 @@ const useStyles = makeStyles(({palette, breakpoints, spacing})=>
                   top: 15
                 },                
               },
-              '& .btn-hexgon': {
+              '& .btn-hexagon': {
                 transform: 'rotate(120deg)',
-                fill: palette.secondary.light
+                fill: palette.secondary.light,
+                '&:focus': {
+                  outline: 'none'
+                }
               },
             },          
           },        
@@ -157,7 +165,7 @@ export default function Hero() {
       <div className="hexagon" onClick={() => scrollToSection('quienes-somos-section', -65)}>
         <div className="hexagon-inside">
           <div className="hexagon-inside-inside">
-            <svg className="btn-hexgon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112.6 99.6"><path d="M20.8,69.8a4.1,4.1,0,0,0,0,4l25,43.6a4,4,0,0,0,3.5,2H99.6a4,4,0,0,0,3.4-2l25.3-43.8a4.1,4.1,0,0,0,0-4l-25-43.7a4,4,0,0,0-3.5-2L49.5,24a3.8,3.8,0,0,0-3.4,2L20.8,69.8m-1.8-1L44.3,25a6,6,0,0,1,5.2-3l50.3-.2a6,6,0,0,1,5.2,3l25.1,43.7a6.4,6.4,0,0,1,0,6h0l-25.3,43.8a6.2,6.2,0,0,1-5.2,3H49.3a5.8,5.8,0,0,1-5.2-3L19,74.8A6.4,6.4,0,0,1,19,68.8Z" transform="translate(-18.2 -21.8)"/></svg>
+            <svg className="btn-hexagon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112.6 99.6"><path d="M20.8,69.8a4.1,4.1,0,0,0,0,4l25,43.6a4,4,0,0,0,3.5,2H99.6a4,4,0,0,0,3.4-2l25.3-43.8a4.1,4.1,0,0,0,0-4l-25-43.7a4,4,0,0,0-3.5-2L49.5,24a3.8,3.8,0,0,0-3.4,2L20.8,69.8m-1.8-1L44.3,25a6,6,0,0,1,5.2-3l50.3-.2a6,6,0,0,1,5.2,3l25.1,43.7a6.4,6.4,0,0,1,0,6h0l-25.3,43.8a6.2,6.2,0,0,1-5.2,3H49.3a5.8,5.8,0,0,1-5.2-3L19,74.8A6.4,6.4,0,0,1,19,68.8Z" transform="translate(-18.2 -21.8)"/></svg>
             <span>
               <Typography className="btn-text">CONÓCENOS <br/>MEJOR</Typography>              
               <Icon className='btn-icon' path={mdiArrowDown} size={1} color="#FED10F"/>

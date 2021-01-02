@@ -26,9 +26,11 @@ export default function Nav({scrolled, pageSelected}) {
         backgroundColor: 'rgba(0,0,0,0)',
         // backgroundColor: palette.primary.main,
         maxHeight: '80px',
-        transition: 'all 300ms ease-out',
+        paddingTop: 12,
+        transition: 'all 300ms',
         '&.scrolled': {
-          backgroundColor: palette.primary.main
+          backgroundColor: palette.primary.main,
+          paddingTop: 0,
         }
       },
       navBar: {
@@ -186,7 +188,7 @@ export default function Nav({scrolled, pageSelected}) {
       <AppBar className={`${classes.appBar} ${scrolled ? 'scrolled' : ''}`} elevation={scrolled ? 4 : 0} >
         <Toolbar>
           <Link to="/">
-            <ColmenitaIcon dark size={scrolled ? 70 : 80} variant="svg"/>
+            <ColmenitaIcon dark size={scrolled ? 70 : 90} variant="svg" />
           </Link>
           <nav className={classes.navBar}>
             <ToolbarMenu />
