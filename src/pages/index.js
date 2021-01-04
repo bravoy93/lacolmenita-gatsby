@@ -5,6 +5,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { makeStyles } from '@material-ui/core/styles';
 import Hero from "../Components/HeroSection/Hero"
 import QuienesSomos from "../Components/QuienesSomos/QuienesSomos"
+import NuestrasObras from "../NuestrasObras/NuestrasObras";
 
 const useStyles = makeStyles({
   heroSection: {
@@ -48,6 +49,7 @@ export default function Home() {
       image={image}/>
       <Hero />
       <QuienesSomos />
+      <NuestrasObras />
     </Layout>
   )
 }

@@ -9,7 +9,7 @@ const useStyles = makeStyles(({palette, breakpoints, spacing})=>
     ({
       heroSection: {
         overflow: 'hidden',
-        height: window.innerHeight,
+        height: '100vh',
         width: '100%',
         paddingTop: 100, 
         display: 'flex',
@@ -78,6 +78,7 @@ const useStyles = makeStyles(({palette, breakpoints, spacing})=>
           bottom: 40,
           zIndex: 1,
           cursor: 'pointer',
+          ariaLabel: 'button',
           '& .hexagon-inside': {
             width: 200,
             height: 100,
@@ -154,7 +155,7 @@ export default function Hero() {
           La Colmenita es un proyecto pedagógico y artístico donde niñas y niños jugando al teatro, la música y la danza, priorizan la formación de valores humanos.
         </Typography>      
       </Hidden>    
-      <Button>
+      <Button onClick={() => scrollToSection('nuestras-obras-section', -65)}>
         Nuestras Obras 
         {/* <Icon path={mdiArrowRight}
         title="Nuestras Obras"

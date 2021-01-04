@@ -79,7 +79,7 @@ export default function QuienesSomos() {
           <Typography>
             Llevamos nuestra obra a los rincones más recónditos de la geografía cubana, priorizando las presentaciones en los poblados más necesitados. Así mismo visitamos centros de salud y escuelas especiales, e integramos niñas y niños con discapacidades mentales y físico motoras a nuestros espectáculos, como terapia especial de cariño.        </Typography>
           <Typography>
-            En el 2007 La Colmenita fue declarada Embajadora de Buena Voluntad de la <a href="https://www.unicef.org" target="_blank" rel="noreferrer">UNICEF</a> como reconocimiento a la labor comunitaria y humana que desempeña para y con las niñas y niños.
+            En el 2007 La Colmenita fue declarada <a href="https://www.unicef.org/spanish/people/people_nationalambassadors.html" target="_blank" rel="noreferrer">Embajadora de Buena Voluntad de la UNICEF</a> como reconocimiento a la labor comunitaria y humana que desempeña para y con las niñas y niños.
           </Typography>
         </Grid>
         <Hidden smDown={true}>

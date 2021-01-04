@@ -112,7 +112,7 @@ const SponsorsContainer = ({children}) =>
           href="http://www.excelencias.com/"/>
       </SponsorsContainer>
       <div className={classes.footerRow}>
-  <span className={classes.footerCopyright}>© 2020 La Colmenita de Cuba. Todos los derechos reservados.</span>
+  <span className={classes.footerCopyright}>© {new Date().getFullYear()} La Colmenita de Cuba. Todos los derechos reservados.</span>
       </div>
       <ul className={classes.footerRow}>
         <FooterItem
