@@ -10,7 +10,7 @@ const useStyles = makeStyles(({palette, breakpoints, spacing})=>
       queEsLaColmenitaSection: {
         background: '#fff',
         color: palette.primary.main,
-        padding: '40px 16px',
+        padding: '50px 40px',
         // paddingTop: 40,
         position: 'relative',
         width: '100%',
@@ -18,7 +18,6 @@ const useStyles = makeStyles(({palette, breakpoints, spacing})=>
           padding: '40px 60px'
         },
         '& h2': {
-          fontFamily: '"La Colmenita"',
           paddingBottom: spacing(4),
           textAlign: 'center',
           [breakpoints.only('xs')]: {

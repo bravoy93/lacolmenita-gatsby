@@ -56,14 +56,13 @@ export default function NuestrasObras() {
       nuestrasObrasSection: {
         background: '#fff',
         color: palette.primary.main,
-        padding: '40px 90px',
+        padding: '100px 90px',
         position: 'relative',
         width: '100%',
         [breakpoints.down('xs')]: {
           padding: '30px 16px'
         },    
         '& h2': {
-          fontFamily: '"La Colmenita"',
           textAlign: 'center',
           [breakpoints.only('xs')]: {
             fontSize: 70,
@@ -208,7 +207,7 @@ export default function NuestrasObras() {
       <Typography classes={{root:classes.nuestrasObrasDescription}} >
         Más de {annosColmenita()} años han dejado una estela de quehacer melífero y de amor traducido en más de 30 obras
       </Typography>  
-      <Grid container justify="center" spacing={3}>
+      <Grid container justify="center" spacing={4}>
         {obras.map(({title, imageSrc}, i) => 
         <Grid item xs={12} sm={6} md={4} align="center" key={i}>
           <HexagonElement>

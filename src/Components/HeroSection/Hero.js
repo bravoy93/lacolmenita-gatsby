@@ -155,7 +155,7 @@ export default function Hero() {
           La Colmenita es un proyecto pedagógico y artístico donde niñas y niños jugando al teatro, la música y la danza, priorizan la formación de valores humanos.
         </Typography>      
       </Hidden>    
-      <Button onClick={() => scrollToSection('nuestras-obras-section', -65)}>
+      <Button onClick={() => scrollToSection('nuestras-obras-section', 0)}>
         Nuestras Obras 
         {/* <Icon path={mdiArrowRight}
         title="Nuestras Obras"

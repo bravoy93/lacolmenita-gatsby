@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Hero from "../Components/HeroSection/Hero"
 import QuienesSomos from "../Components/QuienesSomos/QuienesSomos"
 import NuestrasObras from "../NuestrasObras/NuestrasObras";
+import NuestrosSuennos from "../Components/NuestrosSuennos/NuestrosSuennos"
 
 const useStyles = makeStyles({
   heroSection: {
@@ -49,6 +50,7 @@ export default function Home() {
       image={image}/>
       <Hero />
       <QuienesSomos />
+      <NuestrosSuennos />
       <NuestrasObras />
     </Layout>
   )

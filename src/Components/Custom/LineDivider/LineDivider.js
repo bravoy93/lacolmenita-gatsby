@@ -8,8 +8,7 @@ function LineDivider({width, color, spacing}) {
     lineDivider: {
       width,
       backgroundColor: color,
-      height: 4,
-      borderRadius: 10,
+      height: 2,
       margin: `${_spacing(spacing)}px auto`,
     }})
   );
