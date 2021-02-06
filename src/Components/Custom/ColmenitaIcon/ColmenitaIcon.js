@@ -14,6 +14,7 @@ export default function ColmenitaIcon({size=60, dark, description, variant='pixe
       logoSVG: {
         fontSize: size,
         transition: 'all 300ms',
+        fill: '#000'
       }
     })
     )
