@@ -187,7 +187,7 @@ export default function Hero({ ImageFile }) {
         color="#FED10F"/> */}
             </Button>
           </Hidden>
-          <Hidden xsUp={true}>
+          <Hidden smUp={true}>
             <div
               className="hexagon"
               onClick={() => scrollToSection("quienes-somos-section", -65)}
