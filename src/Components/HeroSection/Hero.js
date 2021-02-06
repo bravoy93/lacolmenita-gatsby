@@ -167,7 +167,7 @@ export default function Hero({ ImageFile }) {
     <React.Fragment>
       <CssBaseline />
       <div className={classes.heroGrid}>
-        <Img className={classes.heroImg} fluid={ImageFile.childImageSharp.fluid} />
+        <Img className={classes.heroImg} fluid={ImageFile.childImageSharp.fluid} loading="eager"/>
         <div className={classes.heroSection}>
           <Typography variant="h1">La Colmenita de Cuba</Typography>
           <Typography className="hero-description">
@@ -187,7 +187,7 @@ export default function Hero({ ImageFile }) {
         color="#FED10F"/> */}
             </Button>
           </Hidden>
-          <Hidden xsUp={true}>
+          <Hidden smUp={true}>
             <div
               className="hexagon"
               onClick={() => scrollToSection("quienes-somos-section", -65)}
