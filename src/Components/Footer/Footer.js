@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
       margin: '0',
       width: '100%',
       display: 'flex',
+      flexWrap: 'wrap',
       alignItems: 'center',
       justifyContent: 'center',
       overflow: 'hidden'
@@ -43,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
         filter: 'saturate(0)'
       },
       [theme.breakpoints.between('xs','sm')]: {
-        padding: '0 14px 14px 14px',
+        padding: '0 8px 14px 8px',
       }
     },
     socialNetwork: {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography, Button } from "@material-ui/core";
+import { Typography, Button, Hidden } from "@material-ui/core";
 import {LineDivider} from '../Components/Custom'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
@@ -118,6 +118,9 @@ export default function NuestrasObras() {
                 transform: 'rotate(120deg)',
                 [breakpoints.up('xl')]: {
                   fontSize: 65
+                },
+                [breakpoints.only('sm')]: {
+                  fontSize: 30
                 }
               },              
               '& button': {
@@ -210,6 +213,7 @@ export default function NuestrasObras() {
       <Grid container justify="center" spacing={4}>
         {obras.map(({title, imageSrc}, i) => 
         <Grid item xs={12} sm={6} md={4} align="center" key={i}>
+          <Hidden xsDown={false} smDown={true}>
           <HexagonElement>
             <img src={imageSrc} alt={`Imagen de obra ${title}`} />
             <div className="hexagonImgOverlay" />
@@ -218,6 +222,7 @@ export default function NuestrasObras() {
             </Typography>
             <Button variant="outlined">Ver Detalles</Button>  
           </HexagonElement>
+          </Hidden>          
         </Grid>
         )}
         <Typography classes={{root:classes.nuestrasObrasCta}}>
