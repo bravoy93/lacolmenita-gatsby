@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 });
 
 export default function Home() {
-  const { site } = useStaticQuery(
+  const { site, file } = useStaticQuery(
     graphql`
       query {
         site {
@@ -31,7 +31,14 @@ export default function Home() {
               height
             }
           }
-        }
+        },
+        file: file(relativePath: {eq: "heroBg.webp"}) {
+          childImageSharp {
+            fluid(maxWidth: 1920, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }        
       }
     `
   )
@@ -48,7 +55,7 @@ export default function Home() {
       <SEO title="Home"
       pathname="/"
       image={image}/>
-      <Hero />
+      <Hero ImageFile={file}/>
       <QuienesSomos />
       <NuestrosSuennos />
       <NuestrasObras />

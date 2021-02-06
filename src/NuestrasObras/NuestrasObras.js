@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect, useRef} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Button, Hidden } from "@material-ui/core";
 import {LineDivider} from '../Components/Custom'
@@ -7,9 +7,10 @@ import Grid from '@material-ui/core/Grid';
 
   
 
-export default function NuestrasObras() {
-  const [obraHexagonHeight, setObraHexagonHeight] = useState(500);
+export default function NuestrasObras() {  
   const [obras, setObras] = useState([])
+  const hexagonObraRef = useRef(null);
+  const [obraHexagonHeight, setObraHexagonHeight] = useState(500);
 
   const fetchData = () => {    
     setObras([
@@ -41,13 +42,13 @@ export default function NuestrasObras() {
   }
 
   useEffect(() => {
-    setTimeout(() => setObraHexagonHeight(document.getElementsByClassName('hexagon-obra')[0].clientWidth + 100), 50);
+    setObraHexagonHeight(hexagonObraRef.current && (hexagonObraRef.current.clientWidth + 100) || 500)
     fetchData();    
     return () => {
-      setTimeout(() => setObraHexagonHeight(document.getElementsByClassName('hexagon-obra')[0].clientWidth + 100), 50);
+      setObraHexagonHeight(hexagonObraRef.current && (hexagonObraRef.current.clientWidth + 100) || 500)
       fetchData(); 
     }
-  },[]);
+  },[hexagonObraRef]);
 
    
 
@@ -189,7 +190,7 @@ export default function NuestrasObras() {
   const annosColmenita = () => new Date().getFullYear() - 1990;
 
   const HexagonElement = ({children, actionElement}) => 
-    <div className="hexagon-obra">
+    <div className="hexagon-obra" ref={hexagonObraRef}>
       {actionElement}
       <div className="hexagon-inside">
         <div className="hexagon-inside-inside">          
