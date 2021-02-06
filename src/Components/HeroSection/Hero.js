@@ -167,7 +167,7 @@ export default function Hero({ ImageFile }) {
     <React.Fragment>
       <CssBaseline />
       <div className={classes.heroGrid}>
-        <Img className={classes.heroImg} fluid={ImageFile.childImageSharp.fluid} loading="eager"/>
+        <Img className={classes.heroImg} fluid={ImageFile.childImageSharp.fluid} loading="eager" fadeIn={ false }/>
         <div className={classes.heroSection}>
           <Typography variant="h1">La Colmenita de Cuba</Typography>
           <Typography className="hero-description">
