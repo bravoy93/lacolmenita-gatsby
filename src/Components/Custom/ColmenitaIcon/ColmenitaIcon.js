@@ -1,9 +1,9 @@
-import React from "react";
+import React, {forwardRef} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import {noDescriptionLight, noDescriptionDark, withDescriptionLight, withDescriptionDark} from "./SvgPaths"
 
-export default function ColmenitaIcon({size=60, dark, description, variant='pixel-image'}) {
+const ColmenitaIcon = forwardRef(({size=60, dark, description, variant='pixel-image'}, ref) => {
   const useStyles = makeStyles(({palette})=>
     ({
       logoPixelImage: {
@@ -14,7 +14,8 @@ export default function ColmenitaIcon({size=60, dark, description, variant='pixe
       logoSVG: {
         fontSize: size,
         transition: 'all 300ms',
-        fill: '#000'
+        fill: '#000',
+        overflow: 'visible',
       }
     })
     )
@@ -50,17 +51,19 @@ export default function ColmenitaIcon({size=60, dark, description, variant='pixe
   // pixel image config
   const logoId = logoIds[logoThemeMode][logoDescriptionMode];
   let logoPixelImageSrc = `https://lacolmenita.imgix.net/${logoId}.png?width=${size}&height=${size}&format=webp`
-  let logoPixelImage = <img src={logoPixelImageSrc} alt="Logo de la Colmenita" className={classes.logoPixelImage}/>
+  let logoPixelImage = <img ref={ref} src={logoPixelImageSrc} alt="Logo de la Colmenita" className={classes.logoPixelImage}/>
 
   // SVG image config
   const svgPath = logoSvgPaths[logoThemeMode][logoDescriptionMode]
 
   let logoSVG = 
-    <SvgIcon className={classes.logoSVG} viewBox='0 0 512 512'>
+    <SvgIcon ref={ref} className={classes.logoSVG} viewBox='0 0 512 512'>
       {svgPath}
     </SvgIcon>
 
   const logo = variant === 'svg' ? logoSVG : logoPixelImage
 
   return logo
-}
+})
+
+export default ColmenitaIcon;

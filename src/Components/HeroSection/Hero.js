@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import { Typography, Button, Hidden, CssBaseline } from "@material-ui/core"
-import {ShapeDivider, ColmenitaIcon} from "../Custom"
+import { ShapeDivider, ColmenitaIcon } from "../Custom"
 import Icon from "@mdi/react"
 import { mdiArrowDown } from "@mdi/js"
 import Img from "gatsby-image"
 import styled from "@emotion/styled"
+import { gsap } from "gsap"
 
 const useStyles = makeStyles(({ palette, breakpoints, spacing }) => ({
   heroGrid: {
@@ -140,20 +141,20 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) => ({
   },
   heroImg: {
     gridArea: "hero",
-    objectFit: 'cover',
-    objectPosition: '50% 50%',
-    height: '100%',
-    width: '100%',
-    position: 'initial',
-  }
+    objectFit: "cover",
+    objectPosition: "50% 50%",
+    height: "100%",
+    width: "100%",
+    position: "initial",
+  },
 }))
 
 const LoadingOverlay = styled.div`
   position: fixed;
   inset: 0;
   background-color: #000;
-  z-index:${({ active }) => active ? 1100 : 0};
-  opacity: ${({ active }) => active ? 1 : 0};
+  z-index: ${({ active }) => (active ? 1100 : 0)};
+  opacity: ${({ active }) => (active ? 1 : 0)};
   transition: all 300ms;
   display: flex;
   align-items: center;
@@ -165,6 +166,14 @@ const LoadingOverlay = styled.div`
   }
 `
 
+const ColmenitaSlogan = styled.p`
+  font-size: 64px;
+  position: absolute;
+  transform: translateY(116px);
+  font-family: "La Colmenita";
+  color: #fed10f;
+`
+
 const scrollToSection = (section, additional) => {
   const anchor = document.getElementById(`${section}`).offsetTop + additional
   window.scroll({
@@ -174,22 +183,76 @@ const scrollToSection = (section, additional) => {
   })
 }
 
+let initialLogoTl = gsap.timeline({ delay: 2 })
+
 export default function Hero({ ImageFile }) {
   const classes = useStyles()
   const [loadingHero, setLoadingHero] = useState(true)
+  const colmeLogoRef = useRef(null)
+  const loadingOverlayRef = useRef(null)
 
-  // useEffect(() => {
-  //   console.log()
-  // }, [])
+  useEffect(() => {
+    initialLogoTl
+      .from(".colme-icon-fragment", {
+        duration: 2,
+        ease: "elastic.out(1, 0.3)",
+        scale: 0,
+        transformOrigin: "center center",
+        stagger: 0.1,
+      })
+      .from(
+        ".colmenita-slogan",
+        {
+          duration: 2,
+          ease: "linear",
+          opacity: 0,
+          scale: 0.8,
+          transformOrigin: "center center",
+        },
+        "-=1"
+      )
+      .to(
+        ".colmenita-slogan",
+        {
+          duration: 0.5,
+          ease: "linear",
+          opacity: 0,
+        },
+        "+=1"
+      )
+      .to(colmeLogoRef.current, {
+        duration: 0.5,
+        ease: "linear",
+        opacity: 0,
+      })
+      .to(loadingOverlayRef.current, {
+        duration: 0.5,
+        ease: "linear",
+        opacity: 0,
+        onComplete: () => setLoadingHero(false),
+      })
+  }, [])
 
   return (
-    <React.Fragment>
+    <>
       <CssBaseline />
       <div className={classes.heroGrid}>
-        <LoadingOverlay active={loadingHero}>
-          <ColmenitaIcon size={340} dark description variant="svg"/>
+        <LoadingOverlay ref={loadingOverlayRef} active={loadingHero}>
+          <ColmenitaIcon
+            size={340}
+            dark
+            description
+            variant="svg"
+            ref={colmeLogoRef}
+          />
+          <ColmenitaSlogan className="colmenita-slogan">
+            "Juntos por el bien"
+          </ColmenitaSlogan>
         </LoadingOverlay>
-        <Img className={classes.heroImg} fluid={ImageFile.childImageSharp.fluid} onLoad={() => setLoadingHero(false)}/>
+        <Img
+          className={classes.heroImg}
+          fluid={ImageFile.childImageSharp.fluid}
+        />
         <div className={classes.heroSection}>
           <Typography variant="h1">La Colmenita de Cuba</Typography>
           <Typography className="hero-description">
@@ -245,6 +308,6 @@ export default function Hero({ ImageFile }) {
           <ShapeDivider color="#FFF" />
         </div>
       </div>
-    </React.Fragment>
+    </>
   )
 }
