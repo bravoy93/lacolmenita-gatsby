@@ -34,7 +34,7 @@ export default function Home() {
         },
         file: file(relativePath: {eq: "heroBg.webp"}) {
           childImageSharp {
-            fluid(maxWidth: 1920, quality: 100) {
+            fluid(maxWidth: 1920, quality: 75) {
               ...GatsbyImageSharpFluid
             }
           }
