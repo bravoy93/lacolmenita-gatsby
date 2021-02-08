@@ -93,7 +93,7 @@ const scrollToSection = (section, additional) => {
   })
 }
 
-let heroTL = gsap.timeline({delay: 3})
+let heroTL = gsap.timeline({delay: 1})
 
 export default function Hero({ ImageFile }) {
   const classes = useStyles();
