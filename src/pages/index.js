@@ -22,7 +22,14 @@ const useStyles = makeStyles({
 })
 
 export default function Home() {
-  const { site, heroImage, ...footerSponsors } = useStaticQuery(
+  const {
+    site,
+    heroImage,
+    abracadabra,
+    cenicienta,
+    ricitos,
+    ...footerSponsors
+  } = useStaticQuery(
     graphql`
       query {
         site {
@@ -37,6 +44,33 @@ export default function Home() {
         heroImage: file(relativePath: { eq: "heroBg.webp" }) {
           childImageSharp {
             fluid(maxWidth: 1920, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        abracadabra: file(
+          relativePath: { eq: "obras/abracadabra/portada.webp" }
+        ) {
+          childImageSharp {
+            fluid(maxHeight: 500, quality: 0) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        cenicienta: file(
+          relativePath: { eq: "obras/cenicienta-segun-los-beatles/portada.webp" }
+        ) {
+          childImageSharp {
+            fluid(maxHeight: 500, quality: 0) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        ricitos: file(
+          relativePath: { eq: "obras/ricitos-valdes-y-los-tres-ositos/portada.webp" }
+        ) {
+          childImageSharp {
+            fluid(maxHeight: 500, quality: 0) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -136,10 +170,13 @@ export default function Home() {
     width: parseInt(site.siteMetadata.siteImage.width),
     height: parseInt(site.siteMetadata.siteImage.height),
   }
+
+  const obrasImages = {abracadabra, cenicienta, ricitos}
+
   const classes = useStyles()
 
   return (
-    <HomeContext.Provider value={footerSponsors}>
+    <HomeContext.Provider value={{footerSponsors, obrasImages}}>
       <Layout pageSelected="/">
         <SEO title="Home" pathname="/" image={image} />
         <Hero ImageFile={heroImage} />
