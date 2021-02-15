@@ -18,7 +18,7 @@ export default function NuestrasObras() {
         title: 'Abracadabra',
         description: 'Obra dedicada a los 5 héroes cubanos.',
         creationDate: '24-01-2011',
-        imageSrc: 'https://lacolmenita.imgix.net/i7Iusd7.jpg?format=webp',
+        imageSrc: 'https://lacolmenita.imgixNO.net/i7Iusd7.jpg?format=webp',
         pictures: [],
         youtubeUrl: ''
       },
@@ -26,7 +26,7 @@ export default function NuestrasObras() {
         title: 'La Cenicienta según Los Beatles',
         description: 'Adaptacion del original de la cenicienta a lo cubano.',
         creationDate: '24-01-2011',
-        imageSrc: 'https://lacolmenita.imgix.net/Jz931rJ.jpg?format=webp',
+        imageSrc: 'https://lacolmenita.imgixNO.net/Jz931rJ.jpg?format=webp',
         pictures: [],
         youtubeUrl: ''
       },
@@ -34,7 +34,7 @@ export default function NuestrasObras() {
         title: 'Ricitos Valdés y Los Tres Ositos',
         description: 'Obra cubana de Ricitos de Oros y los tres ositos.',
         creationDate: '24-01-2011',
-        imageSrc: 'https://lacolmenita.imgix.net/bXyZKAZ.jpg?format=webp',
+        imageSrc: 'https://lacolmenita.imgixNO.net/bXyZKAZ.jpg?format=webp',
         pictures: [],
         youtubeUrl: ''
       },

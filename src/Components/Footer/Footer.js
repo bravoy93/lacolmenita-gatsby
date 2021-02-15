@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import ColmenitaIcon from "../Custom/ColmenitaIcon/ColmenitaIcon"
 import { makeStyles } from "@material-ui/core/styles"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import { useTheme } from '@material-ui/core/styles'
 import {Link} from "gatsby"
+import { ColmeIllustration } from '../Custom'
+import styled from "@emotion/styled"
+import Img from "gatsby-image"
+import { HomeContext } from "../../pages";
 
 const useStyles = makeStyles((theme) => ({
     footer: {
@@ -31,35 +35,39 @@ const useStyles = makeStyles((theme) => ({
       [theme.breakpoints.only('xs')]: {
         paddingTop: '30px'
       }
-    },
-    sponsor: {
-      listStyle: 'none',
-      padding: '0 24px 4px 24px',
-      transition: 'all 150ms ease-in',
-      '& a': {
-        textDecoration: 'none'
-      },
-      '&:hover': {
-        transform: 'scale(1.01)',
-        filter: 'saturate(0)'
-      },
-      [theme.breakpoints.between('xs','sm')]: {
-        padding: '0 8px 14px 8px',
-      }
-    },
-    socialNetwork: {
-      listStyle: 'none',
-      padding: '4px 8px',
-      transition: 'all 150ms ease-in',
-      '& a': {
-        textDecoration: 'none'
-      },
-      '&:hover': {
-        transform: 'scale(1.01)',
-        filter: 'saturate(0)'
-      }
     }
   })
+)
+
+const FooterItem = styled.li`
+  list-style: none;  
+  transition: 'all 150ms ease-in';
+  & a {
+    text-decoration: none;
+  }
+  &:hover {
+    transform: scale(1.01);
+    filter: saturate(0);
+  }
+`
+
+const StyledFooterSponsor = styled(FooterItem)`      
+      padding: 0 24px 4px 24px;
+      transition: all 150ms ease-in;      
+      @media (max-width: 768px) {
+        padding: 0 8px 14px 8px;
+      }
+`
+
+const StyledFooterSocialMedia = styled(FooterItem)`
+      padding: 4px 8px;
+`
+const FooterSponsor = ({name, href, image}) => (
+  <StyledFooterSponsor>
+    <a title={name} href={href} target="_blank" rel="noreferrer">
+      <Img fixed={image.childImageSharp.fixed} alt={name} />
+    </a>
+  </StyledFooterSponsor>
 )
 
 export default function Footer() {
@@ -67,13 +75,15 @@ export default function Footer() {
   const theme = useTheme();
   const xs = useMediaQuery(theme.breakpoints.down('xs'));
   const sm = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+  const footerSponsorsList = useContext(HomeContext)
+  console.log(footerSponsorsList)
 
-  const FooterItem = ({type='sponsor',itemImgixId, name, href, size= xs ? 38 : sm ? 40 : 45}) => 
-  <li className={classes[type]}>
-    <a title={name} href={href} target="_blank" rel="noreferrer">
-      <img src={`https://lacolmenita.imgix.net/${itemImgixId}.png?height=${size}&format=webp`} alt={name} height={`${size}px`}/>
-    </a>
-  </li>
+  // const FooterItem = ({type='sponsor', name, href, size= xs ? 38 : sm ? 40 : 45}) => 
+  // <li className={classes[type]}>
+  //   <a title={name} href={href} target="_blank" rel="noreferrer">
+  //       <ColmeIllustration illustration={illustration} size={size} />
+  //   </a>
+  // </li>
 
 const SponsorsContainer = ({children}) => 
   xs ?
@@ -91,61 +101,46 @@ const SponsorsContainer = ({children}) =>
         </Link>
       </div>
       <SponsorsContainer>
-        <FooterItem 
+        <FooterSponsor 
           name="Ministerio de Cultura de la República Cuba" 
-          itemImgixId="A6ZpBWJ"
+          image={footerSponsorsList[`mincult${xs || sm ? '_xs' : ''}`]}
           href="http://www.mincult.gob.cu/"/>
-        <FooterItem 
+        <FooterSponsor 
           name="Departamento de Artes Escénicas del Mincult"
-          itemImgixId="JijbeAx"
+          image={footerSponsorsList[`cnae${xs || sm ? '_xs' : ''}`]}
           href="http://www.cubaescena.cult.cu/"/>
-        <FooterItem 
+        <FooterSponsor 
           name="Centro de Teatro de Cuba"
-          itemImgixId="JQaNqxv"
+          image={footerSponsorsList[`centroTeatro${xs || sm ? '_xs' : ''}`]}
           href="http://www.cubaescena.cult.cu/"/>
-        <FooterItem 
+        <FooterSponsor 
           name="Fondo de las Naciones Unidas para la Infancia (Unicef)"
-          itemImgixId="yWPqlIx"
+          image={footerSponsorsList[`unicef${xs || sm ? '_xs' : ''}`]}
           href="https://www.unicef.org/"/>
-        <FooterItem 
+        <FooterSponsor 
           name="Grupo Excelencias"
-          itemImgixId="yvvpUIo"
+          image={footerSponsorsList[`excelencias${xs || sm ? '_xs' : ''}`]}
           href="http://www.excelencias.com/"/>
       </SponsorsContainer>
       <div className={classes.footerRow}>
   <span className={classes.footerCopyright}>© {new Date().getFullYear()} La Colmenita de Cuba. Todos los derechos reservados.</span>
       </div>
       <ul className={classes.footerRow}>
-        <FooterItem
-          type="socialNetwork"
-          name="Página de La Colmenita en Facebook" 
-          itemImgixId="Ga51pqU"
-          size={32}
+        {/* <FooterItem
+          name="Página de La Colmenita en Facebook"
           href="https://www.facebook.com/La-Colmenita-de-Cuba-101503491317669/"/>
-        <FooterItem 
-          type="socialNetwork"
+        <FooterSocialMedia
           name="Perfil de La Colmenita en Twitter"
-          itemImgixId="gafQdPg"
-          size={32}
           href="https://twitter.com/ColmenitaDe"/>
-        <FooterItem 
-          type="socialNetwork"
+        <FooterSocialMedia
           name="Perfil de La Colmenita en Instagram"
-          itemImgixId="JmlqTqF"
-          size={32}
           href="http://www.instagram.com/colmenitacubana"/>
-        <FooterItem 
-          type="socialNetwork"
+        <FooterSocialMedia
           name="Canal de La Colmenita en Youtube"
-          itemImgixId="7PI6BsH"
-          size={32}
           href="https://www.youtube.com/channel/UCkYqTQtkHILK3lVFzyq-lxA"/>
-        <FooterItem 
-          type="socialNetwork"
+        <FooterSocialMedia
           name="Canal de La Colmenita en Telegram"
-          itemImgixId="Y7FF7vX"
-          size={32}
-          href="https://t.me/lacolmenita"/>
+          href="https://t.me/lacolmenita"/> */}
       </ul>
     </div>
   )
