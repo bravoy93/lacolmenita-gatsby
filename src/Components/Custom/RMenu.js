@@ -13,7 +13,6 @@ export default function RMenu(
     ) {
   const [anchorEl] = React.useState(anchor)
   const [internalValue, setInternalValue] = React.useState(false)
-  console.log('anchor is',anchorEl)
 
   if(typeof externalValue !== "boolean" && openOnHover && anchorEl.current) {
     anchorEl.current.onmouseenter = ()=> setInternalValue(true);
