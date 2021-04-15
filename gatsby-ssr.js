@@ -67,8 +67,8 @@ const microdata = <script
       "@context": "https://schema.org",
       "@type": "Organization",
       "url": "https://lacolmenita.netlify.app",
-      "logo": "https://lacolmenita.imgix.net/gaTifPU.png?width=512&height=512&format=webp",
-      "image": ["https://lacolmenita.imgix.net/gaTifPU.png?width=512&height=512&format=webp"],
+      "logo": "https://lacolmenita.imgixNO.net/gaTifPU.png?width=512&height=512&format=webp",
+      "image": ["https://lacolmenita.imgixNO.net/gaTifPU.png?width=512&height=512&format=webp"],
       "@id": "https://lacolmenita.netlify.app",
       "name": "La Colmenita",
       "address": {

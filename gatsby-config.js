@@ -13,7 +13,7 @@ module.exports = {
     keywords: [`La Colmenita`, `Cuba`, `infantil`, `teatro`, `teatro infantil`, `compañía de teatro`],
     siteUrl: `https://lacolmenita.netlify.app`,
     siteImage: {
-      src: "https://lacolmenita.imgix.net/hLzTJQz.png",
+      src: "https://lacolmenita.imgixNO.net/hLzTJQz.png",
       width: '512px',
       height: '512px'
     }
